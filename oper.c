@@ -1,7 +1,8 @@
-#include <stdio.h>
+/* processor procedures */
 #include <stdlib.h>
 #include <string.h>
-#include "chip8.h"
+#include <stdio.h>
+#include "mem.h"
 #include "io.h"
 
 void oper_clr(unsigned short code)

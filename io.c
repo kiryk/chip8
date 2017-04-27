@@ -1,5 +1,7 @@
+/* emulator's IO in SDL2 */
+/* this file can be repaced with any source compatible with io.h */
 #include <SDL2/SDL.h>
-#include "chip8.h"
+#include "mem.h"
 #include "io.h"
 
 static SDL_Keycode keys[] = {
