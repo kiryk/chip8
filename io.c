@@ -31,9 +31,6 @@ void io_init(void)
     SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED,
     SCRX * PIXX, SCRY * PIXY,
     SDL_WINDOW_SHOWN);
-  #ifdef FULLSCREEN
-    SDL_SetWindowFullscreen(window, SDL_WINDOW_FULLSCREEN_DESKTOP);
-  #endif
   if (!window)
     exit(1);
   screen = SDL_GetWindowSurface(window);

@@ -19,7 +19,7 @@ struct oper_t { // opcode data
 extern struct oper_t ops[]; // opcodes' data
 
 extern unsigned char reg[]; // registers
-extern unsigned char *vf;   // address 15th/flag register
+extern unsigned char *vf;   // address/flag register
 extern unsigned short regi, regs, regd; // I reg, sound reg, delay reg
 extern int sp, pc; // stack pointer, process counter
 

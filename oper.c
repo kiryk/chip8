@@ -148,8 +148,8 @@ void oper_draw(unsigned short code)
 
   *vf = 0;
   for (i = 0; i < n; ++i, ++y) {
-    if (x >= SCRX)
-      continue;
+    if (y >= SCRY)
+			break;
     if (*vf == 0 && (scr[y][x/8] & mem[regi + i] >> x % 8))
       *vf = 1;
     scr[y][x/8] ^= (mem[regi + i] >> x % 8) & 0xFF;

@@ -5,13 +5,16 @@
 #include "oper.h"
 #include "io.h"
 
+/* stack declaration */
+unsigned short stack[0x10];
+
+/* registers */
 unsigned char reg[0x10] = {0};
 unsigned char *vf = &reg[0xF];
 unsigned short regi = 0, regs = 0, regd = 0;
 int sp = -1, pc = 0x200;
 
-unsigned short stack[0x10];
-
+/* memory with preloaded fonts' definition */
 unsigned char mem[MEMB] = {
   0xF0, 0x90, 0x90, 0x90, 0xF0,
   0x10, 0x10, 0x10, 0x10, 0x10,
@@ -32,6 +35,7 @@ unsigned char mem[MEMB] = {
   0x60, 0x60, 0x60, 0x00, 0x60
 };
 
+/* pointers to the screen's part of the memory, so it can be accessed easily */
 unsigned char *scr[] = {
   mem + 0xF00, mem + 0xF08, mem + 0xF10, mem + 0xF18,
   mem + 0xF20, mem + 0xF28, mem + 0xF30, mem + 0xF38,
@@ -43,6 +47,7 @@ unsigned char *scr[] = {
   mem + 0xFE0, mem + 0xFE8, mem + 0xFF0, mem + 0xFF8
 };
 
+/* processor operations' descriptions and the functions simulating them */
 struct oper_t ops[] = {
   {0xFFFF, 0x00E0, oper_clr},
   {0xFFFF, 0x00EE, oper_ret},
@@ -79,7 +84,6 @@ struct oper_t ops[] = {
   {0xF0FF, 0xF055, oper_save},
   {0xF0FF, 0xF065, oper_load},
   {0xF000, 0x0000, oper_crca},
-
   {0, 0, NULL}
 };
 
@@ -91,7 +95,11 @@ int main(int argc, char *argv[])
   FILE *fd = NULL;
 
   if (argc < 2) {
-    printf("Usage: %s [filename]\n", argv[0]);
+    printf("Usage: %s [game file]\n", argv[0]);
+		printf("Or with options:\n"
+			"\t-p [game file]\n"
+			"\t-r [rom file]\n"
+			"\t-d [delay time]\n");
     exit(1);
   } else if (argc == 2) {
     pname = argv[1];
@@ -108,7 +116,7 @@ int main(int argc, char *argv[])
         d = atoi(argv[i + 1]);
         break;
       default:
-        printf("Error: wrong parameter \"%s\"\n", argv[i] + 1);
+        printf("Error: unknown option %s\n", argv[i]);
         exit(1);
         break;
       }
@@ -116,9 +124,9 @@ int main(int argc, char *argv[])
     }
   }
 
-  // load the program
+  /* load the program */
   if (!pname) {
-    printf("Error: program's filename not specified\n");
+    printf("Error: program's filename not specified, use -p\n");
     exit(1);
   }
   if ((fd = fopen(pname, "r")) == NULL) {
@@ -129,7 +137,7 @@ int main(int argc, char *argv[])
     ;
   fclose(fd);
 
-  // load ROM file
+  /* load ROM file */
   if (rname) {
     if ((fd = fopen(rname, "r")) == NULL) {
       printf("Error: could not open %s\n", rname);

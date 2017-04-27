@@ -1,14 +1,8 @@
 #define NO_KEY 17
 #define KEYN 16
 
-//#define FULLSCREEN
-#ifdef FULLSCREEN
-  #define PIXX 21
-  #define PIXY 21
-#else
-  #define PIXX 12
-  #define PIXY 12
-#endif
+#define PIXX 12
+#define PIXY 12
 
 extern int refresh;
 
