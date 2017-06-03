@@ -1,2 +1,2 @@
 - SDL2 is required
-- compile with: cc -o chip8 *.c
+- compile with: cc -o chip8 *.c -lSDL2
