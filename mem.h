@@ -11,13 +11,13 @@
 #define getaddr(s, n) (s >> n * 4 & 0xFFF)
 
 struct oper_t { /* opcode data */
-  unsigned short mask;
-  unsigned short code;
-  void (*oper)(unsigned short);
+	unsigned short mask;
+	unsigned short code;
+	void (*oper)(unsigned short);
 };
 
 /* mem.c */
-extern struct oper_t ops[]; /* opcodes' data */
+extern const struct oper_t ops[]; /* opcodes' data */
 
 extern unsigned char reg[]; /* registers */
 extern unsigned char *vf;   /* address/flag register */
