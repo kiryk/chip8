@@ -8,7 +8,7 @@ Compilation
 
 Usage
 -----
-- CHIP-8's Keyboard consists of 16 keys:
+CHIP-8's Keyboard consists of 16 keys:
 
 **1**|**2**|**3**|**C**
 -----|-----|-----|-----
@@ -16,7 +16,7 @@ Usage
 **7**|**8**|**9**|**E**
 **A**|**0**|**B**|**F**
 
-- In the emulator they are mapped respectively as:
+In the emulator they are mapped respectively as:
 
 **1**|**2**|**3**|**4**
 -----|-----|-----|-----
@@ -24,5 +24,6 @@ Usage
 **A**|**S**|**D**|**F**
 **Z**|**X**|**C**|**V**
 
----
+Games
+-----
 To download some CHIP-8 games search for "CHIP-8 Games" or "CHIP-8 ROMs"
