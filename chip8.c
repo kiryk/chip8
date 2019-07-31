@@ -48,7 +48,7 @@ int main(int argc, char *argv[])
 		fprintf(stderr, "Error: program's filename not specified, use -p\n");
 		exit(1);
 	}
-	if ((fd = fopen(prg, "r")) == NULL) {
+	if ((fd = fopen(prg, "rb")) == NULL) {
 		fprintf(stderr, "Error: could not open %s\n", prg);
 		exit(1);
 	}
@@ -58,7 +58,7 @@ int main(int argc, char *argv[])
 
 	/* load ROM file */
 	if (rom) {
-		if ((fd = fopen(rom, "r")) == NULL) {
+		if ((fd = fopen(rom, "rb")) == NULL) {
 			fprintf(stderr, "Error: could not open %s\n", rom);
 			exit(1);
 		}
