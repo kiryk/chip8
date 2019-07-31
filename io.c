@@ -1,6 +1,7 @@
 /* emulator's IO in SDL2 */
 /* this file can be repaced with any source compatible with io.h */
 #include <SDL2/SDL.h>
+#include <stdlib.h>
 #include "mem.h"
 #include "io.h"
 
@@ -82,10 +83,8 @@ void io_screen(void)
 
 void io_check_quit(void)
 {
-	static unsigned char *keystate;
+	const Uint8 *keystate = SDL_GetKeyboardState(NULL);
 	static SDL_Event event;
-
-	keystate = SDL_GetKeyboardState(NULL);
 
 	SDL_PollEvent(&event);
 	if (event.type == SDL_QUIT)
@@ -117,10 +116,10 @@ unsigned short io_key_wait(void)
 
 unsigned char io_key_check(int k)
 {
-	static unsigned char *keystate;
+	const Uint8 *keystate = SDL_GetKeyboardState(NULL);
 	static SDL_Event event;
 
-	keystate = SDL_GetKeyboardState(NULL);
+
 	SDL_PollEvent(&event);
 
 	return keystate[scans[k]];
